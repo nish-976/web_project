@@ -35,12 +35,13 @@ var Course;
 var Login;
 var login;
 var searcher;
+var searcher1;
+var Subject;
 async function Logger() {
     const l = await Login.find({
         username: login.username,
         password: login.password
     });
-    //console.log(l.length);
     if (l.length === 1) return "true";
     else return "false";
 }
@@ -53,6 +54,21 @@ async function Searcher() {
 
     return l;
 }
+
+
+async function SubjectSearcher() {
+    
+    const l = await Subject.find({
+        
+        year: searcher1.year,
+        sem: searcher1.sem
+    });
+
+    return l;
+}
+
+
+
 
 mongoose
     .connect(
@@ -74,10 +90,18 @@ async function performDBOps() {
         date: { type: Date, default: Date.now },
         isPublished: Boolean
     });
+    let SubjectSchema = await new mongoose.Schema({
+        year: String,
+        sem: String,
+        subjects:Array
+    });
     let LoginSchema = await new mongoose.Schema({
         username: String,
         password: String
     });
+
+
+    Subject = mongoose.model("Value",SubjectSchema );
     Course = mongoose.model("Course", DBSchema);
     Login = mongoose.model("Login", LoginSchema);
 }
@@ -120,6 +144,15 @@ app.post("/search", (req, res) => {
         semester: req.query.sem
     });
     Searcher().then(alert => res.send(alert));
+});
+
+
+app.post("/yeardata", (req, res) => {
+    searcher1 = new Subject({
+        year: req.query.year,
+        sem: req.query.sem
+    });
+    SubjectSearcher().then(alert => res.send(alert));
 });
 
 const port = 3000;
