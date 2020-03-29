@@ -23,6 +23,14 @@ app.get("/home", (req, res, next) => {
     res.render("home.ejs");
 });
 
+app.get("/next", (req, res, next) => {
+    res.render("next.ejs");
+});
+
+app.get("/slides", (req, res, next) => {
+    res.render("slides.ejs");
+});
+
 var Course;
 var Login;
 var login;
