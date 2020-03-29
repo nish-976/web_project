@@ -2,3 +2,20 @@
     display: flex;
     justify-content: space-between;
 }
+
+.list-group {
+    margin-top: 10px;
+}
+
+.parent-list {
+    margin: 0 100px 0 100px;
+}
+
+#footer-section {
+    margin-top: 100px;
+}
+
+.border {
+    margin-top: 10px;
+    border-style: dotted;
+}
