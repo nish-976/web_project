@@ -55,20 +55,14 @@ async function Searcher() {
     return l;
 }
 
-
 async function SubjectSearcher() {
-    
     const l = await Subject.find({
-        
         year: searcher1.year,
         sem: searcher1.sem
     });
 
     return l;
 }
-
-
-
 
 mongoose
     .connect(
@@ -93,15 +87,14 @@ async function performDBOps() {
     let SubjectSchema = await new mongoose.Schema({
         year: String,
         sem: String,
-        subjects:Array
+        subjects: Array
     });
     let LoginSchema = await new mongoose.Schema({
         username: String,
         password: String
     });
 
-
-    Subject = mongoose.model("Value",SubjectSchema );
+    Subject = mongoose.model("Value", SubjectSchema);
     Course = mongoose.model("Course", DBSchema);
     Login = mongoose.model("Login", LoginSchema);
 }
@@ -146,13 +139,20 @@ app.post("/search", (req, res) => {
     Searcher().then(alert => res.send(alert));
 });
 
-
 app.post("/yeardata", (req, res) => {
     searcher1 = new Subject({
         year: req.query.year,
         sem: req.query.sem
     });
     SubjectSearcher().then(alert => res.send(alert));
+});
+
+app.post("/next", (req, res) => {
+    console.log(req.body.dept);
+    console.log(req.body.yr);
+    console.log(req.body.sem);
+
+    res.redirect("/next");
 });
 
 const port = 3000;

@@ -508,42 +508,41 @@
 
             <div class="modal fade" id="example" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="display: none;" aria-hidden="true">
                 <div class="modal-dialog" role="document">
-                    <div class="modal-content">
+                    <fo class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title" id="exampleModalLabel">
                                 Get Your Study Materials!
                             </h4>
                         </div>
                         <div class="modal-body">
-                            <form>
+                            <form action="/next" method="POST">
                                 <div class="form-group">
                                     <label for="dept">Department</label>
-                                    <input type="text" class="form-control" id="Name" placeholder="Dept" />
+                                    <input type="text" class="form-control" id="Name" name="dept" placeholder="Dept" />
                                 </div>
                                 <div class="form-group">
                                     <label for="year">Year</label>
-                                    <input type="number" class="form-control" id="Email-1" min="1" max="4" placeholder="Year" />
+                                    <input type="number" class="form-control" id="Email-1" name="yr" min="1" max="4" placeholder="Year" />
                                 </div>
                                 <div class="form-group">
                                     <label for="sem">Semester</label>
-                                    <input type="number" class="form-control" id="Message" min="1" max="2" placeholder="Sem" />
+                                    <input type="number" class="form-control" id="Message" name="sem" min="1" max="2" placeholder="Sem" />
                                 </div>
-                            </form>
+
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-light" data-dismiss="modal">
                   Close
                 </button>
-                            <form>
-                                <button class="btn btn-success" formaction="/next" type="submit">
+                            <button class="btn btn-success" formaction="/next" type="submit">
                     Submit
                   </button>
-                            </form>
                         </div>
-                    </div>
+                        </form>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <script src="vendors/jquery/jquery.min.js"></script>
     <script src="vendors/bootstrap/bootstrap.min.js"></script>
