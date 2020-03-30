@@ -9,6 +9,8 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
+var yr, sem;
+
 app.get("/", (req, res, next) => {
     res.render("signup.ejs");
 });
@@ -28,7 +30,14 @@ app.get("/next", (req, res, next) => {
 });
 
 app.get("/slides", (req, res, next) => {
-    res.render("slides.ejs");
+    res.render("slides.ejs", {
+        yr: yr,
+        sem: sem
+    });
+});
+
+app.get("/videos", (req, res, next) => {
+    res.render("videos.ejs");
 });
 
 var Course;
@@ -149,8 +158,8 @@ app.post("/yeardata", (req, res) => {
 
 app.post("/next", (req, res) => {
     console.log(req.body.dept);
-    console.log(req.body.yr);
-    console.log(req.body.sem);
+    yr = req.body.yr;
+    sem = req.body.sem;
 
     res.redirect("/next");
 });
