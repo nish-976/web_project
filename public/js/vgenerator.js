@@ -14,8 +14,10 @@ if(b==2)
 b="2nd";
 var str = "/yeardata?year=" + a +"&sem=" + b;
 var xhttp = new XMLHttpRequest();
+var xhttp1 = new XMLHttpRequest();
 xhttp.onload = function() {
     if (this.readyState == 4 && this.status == 200) {
+        console.log(1112);
         var d = JSON.parse(this.responseText);
         document.getElementById("c1").innerHTML = d[0]["subjects"][0];
         document.getElementById("c2").innerHTML = d[0]["subjects"][1];
@@ -25,5 +27,36 @@ xhttp.onload = function() {
         document.getElementById("c6").innerHTML = d[0]["subjects"][5];
     }
 };
+
+document.getElementById("c1").addEventListener("click", display);
+document.getElementById("c2").addEventListener("click", display);
+document.getElementById("c3").addEventListener("click", display);
+document.getElementById("c4").addEventListener("click", display);
+document.getElementById("c5").addEventListener("click", display);
+var x;
+xhttp1.onload = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var d = JSON.parse(this.responseText);
+        
+         x = d[0]["link"][0];
+         console.log(d[0]["link"]);
+         document.getElementById("iii1").src =d[0]["link"] ;
+        
+    }
+   
+};
+
+
+function display(e)
+{
+    console.log(111);
+   var eval = e.target.innerHTML;
+
+   var str1 = "/search?year=" + a +"&tag=" + eval;
+   console.log(str1);
+   xhttp1.open("POST", str1, true);
+   xhttp1.send();
+
+}
 xhttp.open("POST", str, true);
 xhttp.send();

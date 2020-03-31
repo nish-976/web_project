@@ -16,6 +16,7 @@ var str = "/yeardata?year=" + a +"&sem=" + b;
 var xhttp = new XMLHttpRequest();
 xhttp.onload = function() {
     if (this.readyState == 4 && this.status == 200) {
+        console.log(1112);
         var d = JSON.parse(this.responseText);
         document.getElementById("c1").innerHTML = d[0]["subjects"][0];
         document.getElementById("c2").innerHTML = d[0]["subjects"][1];
@@ -25,5 +26,33 @@ xhttp.onload = function() {
         document.getElementById("c6").innerHTML = d[0]["subjects"][5];
     }
 };
+
+document.getElementById("c1").addEventListener("click", display);
+document.getElementById("c2").addEventListener("click", display);
+document.getElementById("c3").addEventListener("click", display);
+document.getElementById("c4").addEventListener("click", display);
+document.getElementById("c5").addEventListener("click", display);
+
+xhttp1.onload = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var d = JSON.parse(this.responseText);
+        document.getElementById("iii1").src = d[0]["link"][0];
+    }
+};
+
+
+function display(e)
+{
+   var eval = e.target.innerHTML;
+
+   var str1 = "/search?year=" + a +"&tag=" + eval;
+   xhttp1.open("POST", str1, true);
+   xhttp1.send();
+
+}
+
+
+
+
 xhttp.open("POST", str, true);
 xhttp.send();
