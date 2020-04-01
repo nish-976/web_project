@@ -11,7 +11,6 @@ var xhttp = new XMLHttpRequest();
 var xhttp1 = new XMLHttpRequest();
 xhttp.onload = function() {
     if (this.readyState == 4 && this.status == 200) {
-        console.log(1112);
         var d = JSON.parse(this.responseText);
         document.getElementById("c1").innerHTML = d[0]["subjects"][0];
         document.getElementById("c2").innerHTML = d[0]["subjects"][1];
@@ -27,13 +26,28 @@ document.getElementById("c2").addEventListener("click", display);
 document.getElementById("c3").addEventListener("click", display);
 document.getElementById("c4").addEventListener("click", display);
 document.getElementById("c5").addEventListener("click", display);
-var x;
 xhttp1.onload = function() {
     if (this.readyState == 4 && this.status == 200) {
         var d = JSON.parse(this.responseText);
-        x = d[0]["link"][0];
-        console.log(d[0]["link"]);
-        document.getElementById("iii1").src = d[0]["link"];
+        
+      var d1 =  document.getElementById("iii1");
+      var child = d1.lastElementChild;  
+        while (child) { 
+            d1.removeChild(child); 
+            child = d1.lastElementChild; 
+        } 
+      console.log(d);
+     for(i=0;i<d.length;i++)
+     {
+       
+        var a = document.createElement("iframe");
+      a.src = d[i]["link"];
+      a.width="315";
+      a.height="215";
+       a.frameborder="0"; 
+       a.allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" ;
+       d1.appendChild(a);
+     }
     }
 };
 
