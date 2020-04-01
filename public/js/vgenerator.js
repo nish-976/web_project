@@ -1,18 +1,12 @@
-var a =document.getElementById("year123").innerHTML
-var b =document.getElementById("sem123").innerHTML ;
-if(a==1)
-a="1st";
-if(a==2)
-a="2nd";
-if(a==3)
-a="3rd";
-if(a==4)
-a="4th";
-if(b==1)
-b="1st";
-if(b==2)
-b="2nd";
-var str = "/yeardata?year=" + a +"&sem=" + b;
+var a = document.getElementById("year123").innerHTML;
+var b = document.getElementById("sem123").innerHTML;
+if (a == 1) a = "1st";
+if (a == 2) a = "2nd";
+if (a == 3) a = "3rd";
+if (a == 4) a = "4th";
+if (b == 1) b = "1st";
+if (b == 2) b = "2nd";
+var str = "/yeardata?year=" + a + "&sem=" + b;
 var xhttp = new XMLHttpRequest();
 var xhttp1 = new XMLHttpRequest();
 xhttp.onload = function() {
@@ -37,26 +31,20 @@ var x;
 xhttp1.onload = function() {
     if (this.readyState == 4 && this.status == 200) {
         var d = JSON.parse(this.responseText);
-        
-         x = d[0]["link"][0];
-         console.log(d[0]["link"]);
-         document.getElementById("iii1").src =d[0]["link"] ;
-        
+        x = d[0]["link"][0];
+        console.log(d[0]["link"]);
+        document.getElementById("iii1").src = d[0]["link"];
     }
-   
 };
 
-
-function display(e)
-{
+function display(e) {
     console.log(111);
-   var eval = e.target.innerHTML;
+    var eval = e.target.innerHTML;
 
-   var str1 = "/search?year=" + a +"&tag=" + eval;
-   console.log(str1);
-   xhttp1.open("POST", str1, true);
-   xhttp1.send();
-
+    var str1 = "/search?year=" + a + "&tag=" + eval;
+    console.log(str1);
+    xhttp1.open("POST", str1, true);
+    xhttp1.send();
 }
 xhttp.open("POST", str, true);
 xhttp.send();

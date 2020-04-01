@@ -1,0 +1,37 @@
+.contain {
+    display: flex;
+    /*
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    */
+    justify-content: space-between;
+}
+
+.card {
+    flex: 1;
+    max-width: 100%;
+    height: auto;
+    max-height: 310px;
+}
+
+.contents {
+    margin: 100px 300px 0 300px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+#dang {
+    background-color: #ef5350;
+}
+
+#warn {
+    background-color: #fdd835;
+}
+
+#blu {
+    background-color: #29b6f6;
+}

@@ -21,6 +21,14 @@ app.get("/signup", (req, res, next) => {
     res.render("signup.ejs");
 });
 
+app.get("/admin", (req, res, next) => {
+    res.render("signup.ejs");
+});
+
+app.get("/adminpage", (req, res, next) => {
+    res.render("admin.ejs");
+});
+
 app.get("/home", (req, res, next) => {
     res.render("home.ejs");
 });
@@ -37,7 +45,6 @@ app.get("/slides", (req, res, next) => {
 });
 
 app.get("/videos", (req, res, next) => {
-    
     res.render("videos.ejs", {
         yr: yr,
         sem: sem
@@ -60,19 +67,15 @@ async function Logger() {
 }
 
 async function Searcher() {
-   
     var l = await Course.find({
-     
-      year : searchbar.year,
-      tag : searchbar.tag
+        year: searchbar.year,
+        tag: searchbar.tag
     });
 
     return l;
 }
 
 async function SubjectSearcher() {
-    
-
     const l = await Subject.find({
         year: searcher1.year,
         sem: searcher1.sem
@@ -149,10 +152,9 @@ app.post("/login", (req, res) => {
 });
 
 app.post("/search", (req, res) => {
-    
     searchbar = new Course({
-       year : req.query.year,
-       tag :req.query.tag
+        year: req.query.year,
+        tag: req.query.tag
     });
     Searcher().then(alert => res.send(alert));
 });
@@ -166,7 +168,6 @@ app.post("/yeardata", (req, res) => {
 });
 
 app.post("/next", (req, res) => {
-   
     yr = req.body.yr;
     sem = req.body.sem;
 
