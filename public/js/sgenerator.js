@@ -32,23 +32,20 @@ document.getElementById("c6").addEventListener("click", display);
 xhttp1.onload = function() {
     if (this.readyState == 4 && this.status == 200) {
         var d = JSON.parse(this.responseText);
-        var d1 = document.getElementById("iii1");
+        console.log(d);
+        var d1 = document.getElementById("iii2");
         var child = d1.lastElementChild;
         while (child) {
             d1.removeChild(child);
             child = d1.lastElementChild;
         }
-        console.log(d);
-        for (i = 0; i < d.length; i++) {
-            var a = document.createElement("iframe");
-            a.src = d[i]["link"];
-            a.setAttribute("class", "child");
-            a.width = "315";
-            a.height = "215";
-            a.frameborder = "0";
-            a.allow =
-                "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture";
-            d1.appendChild(a);
+        for (var i = 0; i < d.length; i++) {
+            var b = document.createElement("a");
+            b.textContent = d[i]["name"];
+            b.setAttribute("href", d[i]["link"]);
+            b.setAttribute("target", "_blank");
+            b.setAttribute("class", "list-group-item list-group-item");
+            d1.appendChild(b);
         }
     }
 };
@@ -57,7 +54,7 @@ function display(e) {
     console.log(111);
     var eval = e.target.innerHTML;
 
-    var str1 = "/search?year=" + a + "&tag=" + eval;
+    var str1 = "/find?year=" + a + "&tag=" + eval;
     console.log(str1);
     xhttp1.open("POST", str1, true);
     xhttp1.send();

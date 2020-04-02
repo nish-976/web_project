@@ -75,6 +75,15 @@ async function Searcher() {
     return l;
 }
 
+async function finder() {
+    var l = await Slide.find({
+        year: findbar.year,
+        tag: findbar.tag
+    });
+
+    return l;
+}
+
 async function SubjectSearcher() {
     const l = await Subject.find({
         year: searcher1.year,
@@ -104,6 +113,15 @@ async function performDBOps() {
         date: { type: Date, default: Date.now },
         isPublished: Boolean
     });
+    let SlideSchema = await new mongoose.Schema({
+        name: String,
+        link: String,
+        year: String,
+        semester: String,
+        tag: String,
+        date: { type: Date, default: Date.now },
+        isPublished: Boolean
+    });
     let SubjectSchema = await new mongoose.Schema({
         year: String,
         sem: String,
@@ -116,6 +134,7 @@ async function performDBOps() {
 
     Subject = mongoose.model("Value", SubjectSchema);
     Course = mongoose.model("Course", DBSchema);
+    Slide = mongoose.model("Slide", SlideSchema);
     Login = mongoose.model("Login", LoginSchema);
 }
 
@@ -157,6 +176,14 @@ app.post("/search", (req, res) => {
         tag: req.query.tag
     });
     Searcher().then(alert => res.send(alert));
+});
+
+app.post("/find", (req, res) => {
+    findbar = new Slide({
+        year: req.query.year,
+        tag: req.query.tag
+    });
+    finder().then(alert => res.send(alert));
 });
 
 app.post("/yeardata", (req, res) => {

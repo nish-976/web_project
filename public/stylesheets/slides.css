@@ -1,6 +1,8 @@
 .container {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .list-group {
@@ -18,4 +20,8 @@
 .border {
     margin-top: 10px;
     border-style: dotted;
+}
+
+a.list-group-item:hover {
+    background: aqua;
 }

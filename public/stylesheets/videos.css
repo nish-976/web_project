@@ -1,4 +1,21 @@
 .container {
     display: flex;
-    justify-content: space-evenly;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.child {
+    flex: 0 21%;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+#footer-section {
+    margin-top: 100px;
+}
+
+.border {
+    margin-top: 10px;
+    border-style: dotted;
 }
