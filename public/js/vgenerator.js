@@ -48,6 +48,7 @@ xhttp1.onload = function() {
             a.frameborder = "0";
             a.allow =
                 "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture";
+            a.allowFullscreen = 1;
             d1.appendChild(a);
         }
     }
