@@ -47,9 +47,11 @@
                             <a class="nav-link" href="#feedback-section">Team</a>
                         </li>
                         <li class="nav-item btn-contact-us pl-4 pl-lg-0">
-                            <button class="btn btn-info">
-                  Contact Us
-                </button>
+                            <form action="/logout" method="GET">
+                                <button class="btn btn-info" type="submit">
+                    Logout
+                  </button>
+                            </form>
                         </li>
                     </ul>
                 </div>
@@ -154,39 +156,45 @@
             <h4 class="modal-title" id="exampleModalLabel">Modify Contents</h4>
           </div>
           <div class="modal-body">
-            <form>
+            <form action="/video" method="POST">
               <div class="form-group">
                 <label for="year">Year</label>
                 <input
-                  type="number"
+                  type="text"
                   class="form-control"
                   id="Email-1"
                   name="yr"
-                  min="1"
-                  max="4"
                   placeholder="year"
                 />
               </div>
               <div class="form-group">
-                <label for="sem">Semester</label>
+                <label for="sem">Sem</label>
                 <input
-                  type="number"
+                  type="text"
                   class="form-control"
                   id="Email-1"
-                  name="sem"
-                  min="1"
-                  max="2"
+                  name="sems"
                   placeholder="sem"
                 />
               </div>
               <div class="form-group">
-                <label for="subject">Subject</label>
+                <label for="subject">Tag</label>
                 <input
                   type="text"
                   class="form-control"
                   id="Email-1"
                   name="subj"
                   placeholder="subject"
+                />
+              </div>
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="Email-1"
+                  name="video"
+                  placeholder="video"
                 />
               </div>
               <div class="form-group">
@@ -199,31 +207,25 @@
                   placeholder="link"
                 />
               </div>
+
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-light"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button class="btn btn-success" type="submit">
+                  Add
+                </button>
+              </div>
             </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-light" data-dismiss="modal">
-              Close
-            </button>
-            <button type="button" class="btn btn-success">Add</button>
-            <button type="button" class="btn btn-danger">Delete</button>
           </div>
         </div>
       </div>
     </div>
 
-    <!--
-      <div class="card bg-info text-white mb-4">
-        <div class="card-body">Warning Card</div>
-        <div
-          class="card-footer d-flex align-items-center justify-content-between"
-        >
-          <a class="small text-white stretched-link" href="#"
-            >Modify Contents</a
-          >
-        </div>
-      </div>
-    -->
     <link rel="stylesheet" href="/stylesheets/admin.css" />
     <script src="vendors/jquery/jquery.min.js"></script>
     <script src="vendors/bootstrap/bootstrap.min.js"></script>

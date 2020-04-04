@@ -9,13 +9,16 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 var searchbar;
-var yr, sem;
-var s1;
+var yr,
+    sem,
+    temp = 1;
 app.get("/", (req, res, next) => {
-    res.render("signup.ejs");
+    res.render("home.ejs");
 });
 app.get("/signin", (req, res, next) => {
-    res.render("signin.ejs");
+    res.render("signin.ejs", {
+        temp: temp,
+    });
 });
 app.get("/signup", (req, res, next) => {
     res.render("signup.ejs");
@@ -23,6 +26,12 @@ app.get("/signup", (req, res, next) => {
 
 app.get("/admin", (req, res, next) => {
     res.render("signup.ejs");
+});
+
+app.get("/logout", (req, res, next) => {
+    res.render("signin.ejs", {
+        temp: temp,
+    });
 });
 
 app.get("/adminpage", (req, res, next) => {
@@ -40,14 +49,14 @@ app.get("/next", (req, res, next) => {
 app.get("/slides", (req, res, next) => {
     res.render("slides.ejs", {
         yr: yr,
-        sem: sem
+        sem: sem,
     });
 });
 
 app.get("/videos", (req, res, next) => {
     res.render("videos.ejs", {
         yr: yr,
-        sem: sem
+        sem: sem,
     });
 });
 
@@ -57,28 +66,20 @@ var login;
 var searcher;
 var searcher1;
 var Subject;
-async function Logger() {
-    const l = await Login.find({
-        username: login.username,
-        password: login.password
-    });
-    if (l.length === 1) return "true";
-    else return "false";
-}
 
 async function Searcher() {
-    var l = await Course.find({
+    const l = await Course.find({
         year: searchbar.year,
-        tag: searchbar.tag
+        tag: searchbar.tag,
     });
 
     return l;
 }
 
 async function finder() {
-    var l = await Slide.find({
+    const l = await Slide.find({
         year: findbar.year,
-        tag: findbar.tag
+        tag: findbar.tag,
     });
 
     return l;
@@ -87,7 +88,7 @@ async function finder() {
 async function SubjectSearcher() {
     const l = await Subject.find({
         year: searcher1.year,
-        sem: searcher1.sem
+        sem: searcher1.sem,
     });
 
     return l;
@@ -101,7 +102,7 @@ mongoose
         console.log("Connected to MOngoDB");
         performDBOps();
     })
-    .catch(err => console.error("cannot connect"));
+    .catch((err) => console.error("cannot connect"));
 
 async function performDBOps() {
     let DBSchema = await new mongoose.Schema({
@@ -111,7 +112,7 @@ async function performDBOps() {
         semester: String,
         tag: String,
         date: { type: Date, default: Date.now },
-        isPublished: Boolean
+        isPublished: Boolean,
     });
     let SlideSchema = await new mongoose.Schema({
         name: String,
@@ -120,16 +121,16 @@ async function performDBOps() {
         semester: String,
         tag: String,
         date: { type: Date, default: Date.now },
-        isPublished: Boolean
+        isPublished: Boolean,
     });
     let SubjectSchema = await new mongoose.Schema({
         year: String,
         sem: String,
-        subjects: Array
+        subjects: Array,
     });
     let LoginSchema = await new mongoose.Schema({
-        username: String,
-        password: String
+        email: String,
+        password: String,
     });
 
     Subject = mongoose.model("Value", SubjectSchema);
@@ -138,60 +139,73 @@ async function performDBOps() {
     Login = mongoose.model("Login", LoginSchema);
 }
 
-app.post("/", (req, res) => {
-    const course = new Course({
-        name: req.query.name,
-        link: req.query.link,
-        year: req.query.year,
-        semester: req.query.sem,
-        tag: req.query.tag,
-        isPublished: true
-    });
-    course.save();
-
-    res.send("Entry Recorded");
-});
-
 app.post("/register", (req, res) => {
     const login = new Login({
-        username: req.query.username,
-        password: req.query.password
+        email: req.body.email,
+        password: req.body.password,
     });
     login.save();
 
-    res.send("Registered User");
+    res.redirect("/adminpage");
+});
+
+app.post("/signin", (req, res) => {
+    res.redirect("/signin");
+});
+
+app.post("/video", (req, res) => {
+    const lecture = new Course({
+        name: req.body.video,
+        link: req.body.link,
+        year: req.body.yr,
+        semester: req.body.sems,
+        tag: req.body.subj,
+        isPublished: true,
+    });
+    lecture.save();
+    res.redirect("/adminpage");
 });
 
 app.post("/login", (req, res) => {
-    login = new Login({
-        username: req.query.username,
-        password: req.query.password
+    var email = req.body.email;
+    var password = req.body.password;
+
+    Login.findOne({ email: email, password: password }, function(err, result) {
+        if (err) {
+            console.log(err);
+            return res.status(500).send();
+        }
+        if (!result) {
+            temp = 0;
+            res.redirect("/signin");
+        } else {
+            res.redirect("/adminpage");
+        }
     });
-    Logger().then(alert => res.send(alert));
 });
 
 app.post("/search", (req, res) => {
     searchbar = new Course({
         year: req.query.year,
-        tag: req.query.tag
+        tag: req.query.tag,
     });
-    Searcher().then(alert => res.send(alert));
+    Searcher().then((alert) => res.send(alert));
 });
 
 app.post("/find", (req, res) => {
     findbar = new Slide({
         year: req.query.year,
-        tag: req.query.tag
+        tag: req.query.tag,
     });
-    finder().then(alert => res.send(alert));
+    finder().then((alert) => res.send(alert));
 });
 
 app.post("/yeardata", (req, res) => {
     searcher1 = new Subject({
         year: req.query.year,
-        sem: req.query.sem
+        sem: req.query.sem,
     });
-    SubjectSearcher().then(alert => res.send(alert));
+    SubjectSearcher().then((alert) => res.send(alert));
 });
 
 app.post("/next", (req, res) => {

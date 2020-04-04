@@ -51,17 +51,17 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
                         <!--<a class="nav-link" href="#">Our vision-->
-                        <a class="btn btn-light-blue btn-sm btn-block active" role="button" aria-pressed="true">Vision</a>
+                        <a href="/" class="btn btn-light-blue btn-sm btn-block active" role="button" aria-pressed="true">Home</a>
                         <span class="sr-only">(current)</span>
                         </a>
                     </li>
                     &nbsp; &nbsp;&nbsp;
                     <li class="nav-item">
-                        <a class="btn btn-light-blue btn-sm btn-block active" role="button" aria-pressed="true">Campus</a>
+                        <a href="#" class="btn btn-light-blue btn-sm btn-block active" role="button" aria-pressed="true">Campus</a>
                     </li>
                     &nbsp; &nbsp;&nbsp;
                     <li class="nav-item">
-                        <a class="btn btn-light-blue btn-sm btn-block active" role="button" aria-pressed="true">Site</a>
+                        <a href="http://www.jaduniv.edu.in/" class="btn btn-light-blue btn-sm btn-block active" role="button" aria-pressed="true">Site</a>
                     </li>
                 </ul>
             </div>
@@ -115,7 +115,7 @@
         <!--/.Carousel Wrapper-->
 
         <!-- Default form register -->
-        <form id="card" class="text-center border border-light p-5" action="#!">
+        <form id="card" class="text-center border border-light p-5" action="/register" method="POST">
             <div id="register">Register Here</div>
             <div class="form-row mb-4">
                 <div class="col">
@@ -129,10 +129,10 @@
             </div>
 
             <!-- E-mail -->
-            <input type="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail">
+            <input type="email" id="defaultRegisterFormEmail" class="form-control mb-4" name="email" placeholder="E-mail">
 
             <!-- Password -->
-            <input type="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+            <input type="password" id="defaultRegisterFormPassword" class="form-control" name="password" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock">
             <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
                 At least 8 characters and 1 digit
             </small>
@@ -151,7 +151,7 @@
         -->
             <!-- Sign up button -->
             <button class="btn btn-outline-light-blue btn-rounded btn-block my-4 waves-effect z-depth-0" formaction="/signin" type="submit">Already an admin ? Log in!</button>
-            <button class="btn btn-light-blue btn-rounded btn-block my-4 waves-effect z-depth-0 active" formaction="/signup" type="submit">Sign up</button>
+            <button class="btn btn-light-blue btn-rounded btn-block my-4 waves-effect z-depth-0 active" type="submit">Sign up</button>
             <!-- Social register -->
             <p>or sign up with:</p>
 

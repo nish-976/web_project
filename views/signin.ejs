@@ -51,17 +51,17 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
                         <!--<a class="nav-link" href="#">Our vision-->
-                        <a class="btn btn-light-blue btn-sm btn-block active" role="button" aria-pressed="true">Vision</a>
+                        <a href="/" class="btn btn-light-blue btn-sm btn-block active" role="button" aria-pressed="true">Home</a>
                         <span class="sr-only">(current)</span>
                         </a>
                     </li>
                     &nbsp; &nbsp;&nbsp;
                     <li class="nav-item">
-                        <a class="btn btn-light-blue btn-sm btn-block active" role="button" aria-pressed="true">Campus</a>
+                        <a href="#" class="btn btn-light-blue btn-sm btn-block active" role="button" aria-pressed="true">Campus</a>
                     </li>
                     &nbsp; &nbsp;&nbsp;
                     <li class="nav-item">
-                        <a class="btn btn-light-blue btn-sm btn-block active" role="button" aria-pressed="true">Site</a>
+                        <a href="http://www.jaduniv.edu.in/" class="btn btn-light-blue btn-sm btn-block active" role="button" aria-pressed="true">Site</a>
                     </li>
                 </ul>
             </div>
@@ -115,48 +115,50 @@
         <!--/.Carousel Wrapper-->
 
         <!-- Default form register -->
-        <form id="card" class="text-center border border-light p-5" action="#!">
-            <div id="login">Login Here</div>
-            <div class="form-row mb-4"></div>
-            <!-- E-mail -->
-            <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
+        <form id="card" class="text-center border border-light p-5" action="/login" method="POST">
+            <% if (!temp) { %>
+                <div id="login">Invalid Credentials</div>
+                <%}  %>
+                    <div id="login">Login Here</div>
+                    <div class="form-row mb-4"></div>
+                    <!-- E-mail -->
+                    <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" name="email" placeholder="Email">
 
-            <!-- Password -->
-            <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+                    <!-- Password -->
+                    <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" name="password" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock">
 
-            <div class="d-flex justify-content-around">
-                <div>
-                    <!-- Remember me -->
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
-                        <label class="custom-control-label" for="defaultLoginFormRemember">Remember me</label>
+                    <div class="d-flex justify-content-around">
+                        <div>
+                            <!-- Remember me -->
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
+                                <label class="custom-control-label" for="defaultLoginFormRemember">Remember me</label>
+                            </div>
+                        </div>
+                        <div>
+                            <!-- Forgot password -->
+                            <a href="">Forgot password?</a>
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <!-- Forgot password -->
-                    <a href="">Forgot password?</a>
-                </div>
-            </div>
 
-            <!-- Sign in button -->
-            <button class="btn btn-light-blue btn-rounded btn-block my-4 waves-effect z-depth-0 active" type="submit">Sign in</button>
-            <!-- Social register -->
-            <p>Not an Admin ?
-                <a href="/signup">Request</a>
-            </p>
-            <p>or sign in with:</p>
+                    <!-- Sign in button -->
+                    <button class="btn btn-light-blue btn-rounded btn-block my-4 waves-effect z-depth-0 active" type="submit">Sign in</button>
+                    <!-- Social register -->
+                    <p>Not an Admin ?
+                        <a href="/signup">Request</a>
+                    </p>
+                    <p>or sign in with:</p>
 
-            <a href="#" class="mx-2" role="button"><i class="fab fa-facebook-f light-blue-text active"></i></a>
-            <a href="#" class="mx-2" role="button"><i class="fab fa-twitter light-blue-text active"></i></a>
-            <a href="#" class="mx-2" role="button"><i class="fab fa-linkedin-in light-blue-text active"></i></a>
-            <a href="#" class="mx-2" role="button"><i class="fab fa-github light-blue-text active"></i></a>
+                    <a href="#" class="mx-2" role="button"><i class="fab fa-facebook-f light-blue-text active"></i></a>
+                    <a href="#" class="mx-2" role="button"><i class="fab fa-twitter light-blue-text active"></i></a>
+                    <a href="#" class="mx-2" role="button"><i class="fab fa-linkedin-in light-blue-text active"></i></a>
+                    <a href="#" class="mx-2" role="button"><i class="fab fa-github light-blue-text active"></i></a>
 
-            <hr>
-
-            <!-- Terms of service -->
-            <p>By clicking
-                <em>Sign up</em> you agree to our
-                <a href="" target="_blank">terms of service</a>
+                    <hr>
+                    <!-- Terms of service -->
+                    <p>By clicking
+                        <em>Sign up</em> you agree to our
+                        <a href="" target="_blank">terms of service</a>
 
         </form>
         <!-- Default form register -->
