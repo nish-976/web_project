@@ -35,7 +35,9 @@ app.get("/logout", (req, res, next) => {
 });
 
 app.get("/adminpage", (req, res, next) => {
-    res.render("admin.ejs");
+    res.render("admin.ejs", {
+        success: "",
+    });
 });
 
 app.get("/home", (req, res, next) => {
@@ -154,7 +156,7 @@ app.post("/signin", (req, res) => {
 });
 
 app.post("/video", (req, res) => {
-    const lecture = new Course({
+    const lectures = new Course({
         name: req.body.video,
         link: req.body.link,
         year: req.body.yr,
@@ -162,8 +164,12 @@ app.post("/video", (req, res) => {
         tag: req.body.subj,
         isPublished: true,
     });
-    lecture.save();
-    res.redirect("/adminpage");
+    lectures.save((err, lecture) => {
+        if (err) return console.log(err);
+        res.render("admin.ejs", {
+            success: "Record inserted successfully",
+        });
+    });
 });
 
 app.post("/login", (req, res) => {

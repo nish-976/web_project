@@ -59,13 +59,19 @@
         </nav>
     </header>
 
-    <div class="contents">
-        <div class="contain">
-            <div id="blu" class="card text-white mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">Slides</h5>
-                    <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a href="#" class="card-link" data-toggle="modal" data-target="#exampleModal">Modify Contents</a
+    <% if(success != "") {%>
+        <div class="alert alert-success" role="alert">
+            <%= success %>
+        </div>
+        <% } %>
+
+            <div class="contents">
+                <div class="contain">
+                    <div id="blu" class="card text-white mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Slides</h5>
+                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                <a href="#" class="card-link" data-toggle="modal" data-target="#exampleModal">Modify Contents</a
               >
             </div>
           </div>
