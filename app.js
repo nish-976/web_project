@@ -1,3 +1,5 @@
+const secretcode = "#98831897njkfdskjsdnfknfd&%78&*&*YHJKNKKLIOI";
+
 const express = require("express");
 const mongoose = require("mongoose");
 var path = require("path");
@@ -142,6 +144,10 @@ async function performDBOps() {
 }
 
 app.post("/register", (req, res) => {
+    if(req.body.code != secretcode)
+    ;
+    else
+    {
     const login = new Login({
         email: req.body.email,
         password: req.body.password,
@@ -149,6 +155,7 @@ app.post("/register", (req, res) => {
     login.save();
 
     res.redirect("/adminpage");
+}
 });
 
 app.post("/signin", (req, res) => {

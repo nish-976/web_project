@@ -55,7 +55,6 @@ xhttp1.onload = function() {
 };
 
 function display(e) {
-    console.log(111);
     var eval = e.target.innerHTML;
 
     var str1 = "/search?year=" + a + "&tag=" + eval;
