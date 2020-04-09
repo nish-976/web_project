@@ -228,6 +228,6 @@ app.post("/next", (req, res) => {
     res.redirect("/next");
 });
 
-const port = 3000;
+const port = process.env.PORT ||3000;
 
 app.listen(port);
