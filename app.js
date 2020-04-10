@@ -26,6 +26,11 @@ app.get("/signup", (req, res, next) => {
 });
 
 app.get("/admin", (req, res, next) => {
+    if(auth)
+    res.render("admin.ejs", {
+        success: "",
+    });
+    else
     res.render("signup.ejs");
 });
 
