@@ -1,27 +1,14 @@
-.contain {
+.container {
     display: flex;
-    /*
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: flex-start;
-    */
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .card {
     flex: 1;
     max-width: 100%;
     height: auto;
-    max-height: 310px;
-}
-
-.contents {
-    margin: 0 300px 0 300px;
-}
-
-.container {
-    display: flex;
-    justify-content: space-between;
 }
 
 #dang {
