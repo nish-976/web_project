@@ -1,10 +1,14 @@
 const secretcode = "#98831897njkfdskjsdnfknfd&%78&*&*YHJKNKKLIOI";
 
+
+
 const express = require("express");
 const mongoose = require("mongoose");
 var path = require("path");
 var bodyParser = require("body-parser");
 const app = express();
+var cookieParser = require('cookie-parser');
+app.use(cookieParser());
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -25,13 +29,34 @@ app.get("/signup", (req, res, next) => {
     res.render("signup.ejs");
 });
 
+
+function isEmpty(obj) {
+    for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
+}
+
 app.get("/admin", (req, res, next) => {
- 
+ if(!isEmpty(req.cookies))
+ res.render("admin.ejs", {
+    success: "",
+});
+else
     res.render("signup.ejs");
    
 });
 
+app.post("/signin", (req, res) => {
+    res.redirect("/signin");
+});
+
+
+
 app.get("/logout", (req, res, next) => {
+    res.clearCookie('email');
+    res.clearCookie('password');
    
     res.render("signin.ejs", {
         temp: temp,
@@ -42,6 +67,7 @@ app.get("/logout", (req, res, next) => {
 
 app.get("/home", (req, res, next) => {
     res.render("home.ejs");
+    
 });
 
 app.get("/next", (req, res, next) => {
@@ -142,6 +168,7 @@ async function performDBOps() {
 }
 
 app.post("/register", (req, res) => {
+
     if(req.body.code != secretcode)
     ;
     else
@@ -151,16 +178,15 @@ app.post("/register", (req, res) => {
         password: req.body.password,
     });
     login.save();
-auth = true;
+    res.cookie('email', req.body.email);
+    res.cookie('password', req.body.password);
 res.render("admin.ejs", {
     success: "",
 });
 }
 });
 
-app.post("/signin", (req, res) => {
-    res.redirect("/signin");
-});
+
 
 app.post("/video", (req, res) => {
     const lectures = new Course({
@@ -192,6 +218,8 @@ app.post("/login", (req, res) => {
             temp = 0;
             res.redirect("/signin");
         } else {
+            res.cookie('email', email);
+    res.cookie('password', password);
             res.render("admin.ejs", {
                 success: "",
             });
