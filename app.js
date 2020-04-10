@@ -1,10 +1,9 @@
 const secretcode = "#98831897njkfdskjsdnfknfd&%78&*&*YHJKNKKLIOI";
-
+var auth = false;
 const express = require("express");
 const mongoose = require("mongoose");
 var path = require("path");
 var bodyParser = require("body-parser");
-
 const app = express();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -31,15 +30,19 @@ app.get("/admin", (req, res, next) => {
 });
 
 app.get("/logout", (req, res, next) => {
+    auth=false;
     res.render("signin.ejs", {
         temp: temp,
     });
 });
 
 app.get("/adminpage", (req, res, next) => {
+    if(auth)
     res.render("admin.ejs", {
         success: "",
     });
+    else
+    res.render("404.ejs");
 });
 
 app.get("/home", (req, res, next) => {
@@ -153,7 +156,7 @@ app.post("/register", (req, res) => {
         password: req.body.password,
     });
     login.save();
-
+auth = true;
     res.redirect("/adminpage");
 }
 });
@@ -192,6 +195,7 @@ app.post("/login", (req, res) => {
             temp = 0;
             res.redirect("/signin");
         } else {
+            auth = true;
             res.redirect("/adminpage");
         }
     });
@@ -220,14 +224,10 @@ app.post("/yeardata", (req, res) => {
     });
     SubjectSearcher().then((alert) => res.send(alert));
 });
-
 app.post("/next", (req, res) => {
     yr = req.body.yr;
     sem = req.body.sem;
-
     res.redirect("/next");
 });
-
 const port = process.env.PORT ||3000;
-
 app.listen(port);
