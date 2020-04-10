@@ -1,5 +1,5 @@
 const secretcode = "#98831897njkfdskjsdnfknfd&%78&*&*YHJKNKKLIOI";
-var auth = false;
+
 const express = require("express");
 const mongoose = require("mongoose");
 var path = require("path");
@@ -26,29 +26,19 @@ app.get("/signup", (req, res, next) => {
 });
 
 app.get("/admin", (req, res, next) => {
-    if(auth)
-    res.render("admin.ejs", {
-        success: "",
-    });
-    else
+ 
     res.render("signup.ejs");
+   
 });
 
 app.get("/logout", (req, res, next) => {
-    auth=false;
+   
     res.render("signin.ejs", {
         temp: temp,
     });
 });
 
-app.get("/adminpage", (req, res, next) => {
-    if(auth)
-    res.render("admin.ejs", {
-        success: "",
-    });
-    else
-    res.render("404.ejs");
-});
+
 
 app.get("/home", (req, res, next) => {
     res.render("home.ejs");
@@ -200,8 +190,9 @@ app.post("/login", (req, res) => {
             temp = 0;
             res.redirect("/signin");
         } else {
-            auth = true;
-            res.redirect("/adminpage");
+            res.render("admin.ejs", {
+                success: "",
+            });
         }
     });
 });
