@@ -152,7 +152,9 @@ app.post("/register", (req, res) => {
     });
     login.save();
 auth = true;
-    res.redirect("/adminpage");
+res.render("admin.ejs", {
+    success: "",
+});
 }
 });
 
