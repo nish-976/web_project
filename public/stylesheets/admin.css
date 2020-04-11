@@ -1,10 +1,5 @@
-.contain {
+.child {
     display: flex;
-    /*
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: flex-start;
-    */
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
@@ -12,20 +7,16 @@
 
 .card {
     flex: 1;
-    max-width: 100%;
-    height: auto;
-    max-height: 310px;
 }
 
-.contents {
-    margin: 100px 300px 0 300px;
+.middle {
+    margin: 5% 20% 0 20%;
 }
 
-.container {
+.msgbox {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 }
 
 #dang {

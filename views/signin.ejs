@@ -117,8 +117,10 @@
         <!-- Default form register -->
         <form id="card" class="text-center border border-light p-5" action="/login" method="POST">
             <% if (!temp) { %>
-                <div id="login">Invalid Credentials</div>
-                <%}  %>
+                <div class="alert alert-danger" role="alert">
+                    Invalid Credentials
+                </div>
+                <% } %>
                     <div id="login">Login Here</div>
                     <div class="form-row mb-4"></div>
                     <!-- E-mail -->

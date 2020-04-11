@@ -31,21 +31,21 @@ app.get("/signup", (req, res, next) => {
 
 
 function isEmpty(obj) {
-    for(var key in obj) {
-        if(obj.hasOwnProperty(key))
+    for (var key in obj) {
+        if (obj.hasOwnProperty(key))
             return false;
     }
     return true;
 }
 
 app.get("/admin", (req, res, next) => {
- if(!isEmpty(req.cookies))
- res.render("admin.ejs", {
-    success: "",
-});
-else
-    res.render("signup.ejs");
-   
+    if (!isEmpty(req.cookies))
+        res.render("admin.ejs", {
+            success: "",
+        });
+    else
+        res.render("signup.ejs");
+
 });
 
 app.post("/signin", (req, res) => {
@@ -57,7 +57,7 @@ app.post("/signin", (req, res) => {
 app.get("/logout", (req, res, next) => {
     res.clearCookie('email');
     res.clearCookie('password');
-   
+    temp = 1;
     res.render("signin.ejs", {
         temp: temp,
     });
@@ -67,7 +67,7 @@ app.get("/logout", (req, res, next) => {
 
 app.get("/home", (req, res, next) => {
     res.render("home.ejs");
-    
+
 });
 
 app.get("/next", (req, res, next) => {
@@ -169,21 +169,20 @@ async function performDBOps() {
 
 app.post("/register", (req, res) => {
 
-    if(req.body.code != secretcode)
+    if (req.body.code != secretcode)
     ;
-    else
-    {
-    const login = new Login({
-        email: req.body.email,
-        password: req.body.password,
-    });
-    login.save();
-    res.cookie('email', req.body.email);
-    res.cookie('password', req.body.password);
-res.render("admin.ejs", {
-    success: "",
-});
-}
+    else {
+        const login = new Login({
+            email: req.body.email,
+            password: req.body.password,
+        });
+        login.save();
+        res.cookie('email', req.body.email);
+        res.cookie('password', req.body.password);
+        res.render("admin.ejs", {
+            success: "",
+        });
+    }
 });
 
 
@@ -219,7 +218,7 @@ app.post("/login", (req, res) => {
             res.redirect("/signin");
         } else {
             res.cookie('email', email);
-    res.cookie('password', password);
+            res.cookie('password', password);
             res.render("admin.ejs", {
                 success: "",
             });
@@ -255,5 +254,5 @@ app.post("/next", (req, res) => {
     sem = req.body.sem;
     res.redirect("/next");
 });
-const port = process.env.PORT ||3000;
+const port = process.env.PORT || 3000;
 app.listen(port);
