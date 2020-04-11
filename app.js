@@ -1,7 +1,4 @@
-const secretcode = "#98831897njkfdskjsdnfknfd&%78&*&*YHJKNKKLIOI";
-
-
-
+var secretcode = "#98831897njkfdskjsdnfknfd&%78&*&*YHJKNKKLIOI";
 const express = require("express");
 const mongoose = require("mongoose");
 var path = require("path");
@@ -17,6 +14,56 @@ var searchbar;
 var yr,
     sem,
     temp = 1;
+
+
+    function sendMail()
+    {
+        var nodemailer = require('nodemailer');
+
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'collegenotesjadavpuruniversity@gmail.com',
+    pass: '905197LKKS'
+  }
+});
+
+var mailOptions = {
+  from: 'collegenotesjadavpuruniversity@gmail.com',
+  to: 'kakolipal528@gmail.com',
+  subject: 'NEW KEY',
+  text: secretcode
+};
+
+
+var mailOptions1 = {
+    from: 'collegenotesjadavpuruniversity@gmail.com',
+    to: 'singhrajnishant976@gmail.com',
+    subject: 'NEW KEY',
+    text:  secretcode
+  };
+transporter.sendMail(mailOptions);
+transporter.sendMail(mailOptions1);
+    }
+
+
+
+    function newKey()
+    {
+        var result           = '';
+        var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        var length = 30;
+        var charactersLength = characters.length;
+        for ( var i = 0; i < length; i++ ) {
+           result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        return result;
+    }
+    
+
+
+
+
 app.get("/", (req, res, next) => {
     res.render("home.ejs");
 });
@@ -178,6 +225,9 @@ app.post("/register", (req, res) => {
         password: req.body.password,
     });
     login.save();
+   
+    secretcode = newKey();
+    sendMail();
     res.cookie('email', req.body.email);
     res.cookie('password', req.body.password);
 res.render("admin.ejs", {
