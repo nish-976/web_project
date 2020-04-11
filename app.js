@@ -1,13 +1,10 @@
-const secretcode = "#98831897njkfdskjsdnfknfd&%78&*&*YHJKNKKLIOI";
-
-
-
+var secretcode = "#98831897njkfdskjsdnfknfd&%78&*&*YHJKNKKLIOI";
 const express = require("express");
 const mongoose = require("mongoose");
 var path = require("path");
 var bodyParser = require("body-parser");
 const app = express();
-var cookieParser = require('cookie-parser');
+var cookieParser = require("cookie-parser");
 app.use(cookieParser());
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -17,6 +14,47 @@ var searchbar;
 var yr,
     sem,
     temp = 1;
+
+function sendMail() {
+    var nodemailer = require("nodemailer");
+
+    var transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+            user: "collegenotesjadavpuruniversity@gmail.com",
+            pass: "905197LKKS",
+        },
+    });
+
+    var mailOptions = {
+        from: "collegenotesjadavpuruniversity@gmail.com",
+        to: "kakolipal528@gmail.com",
+        subject: "NEW KEY",
+        text: secretcode,
+    };
+
+    var mailOptions1 = {
+        from: "collegenotesjadavpuruniversity@gmail.com",
+        to: "singhrajnishant976@gmail.com",
+        subject: "NEW KEY",
+        text: secretcode,
+    };
+    transporter.sendMail(mailOptions);
+    transporter.sendMail(mailOptions1);
+}
+
+function newKey() {
+    var result = "";
+    var characters =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    var length = 30;
+    var charactersLength = characters.length;
+    for (var i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+}
+
 app.get("/", (req, res, next) => {
     res.render("home.ejs");
 });
@@ -29,11 +67,9 @@ app.get("/signup", (req, res, next) => {
     res.render("signup.ejs");
 });
 
-
 function isEmpty(obj) {
     for (var key in obj) {
-        if (obj.hasOwnProperty(key))
-            return false;
+        if (obj.hasOwnProperty(key)) return false;
     }
     return true;
 }
@@ -43,31 +79,24 @@ app.get("/admin", (req, res, next) => {
         res.render("admin.ejs", {
             success: "",
         });
-    else
-        res.render("signup.ejs");
-
+    else res.render("signup.ejs");
 });
 
 app.post("/signin", (req, res) => {
     res.redirect("/signin");
 });
 
-
-
 app.get("/logout", (req, res, next) => {
-    res.clearCookie('email');
-    res.clearCookie('password');
+    res.clearCookie("email");
+    res.clearCookie("password");
     temp = 1;
     res.render("signin.ejs", {
         temp: temp,
     });
 });
 
-
-
 app.get("/home", (req, res, next) => {
     res.render("home.ejs");
-
 });
 
 app.get("/next", (req, res, next) => {
@@ -168,24 +197,23 @@ async function performDBOps() {
 }
 
 app.post("/register", (req, res) => {
-
-    if (req.body.code != secretcode)
-    ;
+    if (req.body.code != secretcode);
     else {
         const login = new Login({
             email: req.body.email,
             password: req.body.password,
         });
         login.save();
-        res.cookie('email', req.body.email);
-        res.cookie('password', req.body.password);
+
+        secretcode = newKey();
+        sendMail();
+        res.cookie("email", req.body.email);
+        res.cookie("password", req.body.password);
         res.render("admin.ejs", {
             success: "",
         });
     }
 });
-
-
 
 app.post("/video", (req, res) => {
     const lectures = new Course({
@@ -217,8 +245,8 @@ app.post("/login", (req, res) => {
             temp = 0;
             res.redirect("/signin");
         } else {
-            res.cookie('email', email);
-            res.cookie('password', password);
+            res.cookie("email", email);
+            res.cookie("password", password);
             res.render("admin.ejs", {
                 success: "",
             });
