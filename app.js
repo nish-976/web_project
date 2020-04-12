@@ -10,10 +10,31 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
+var options = null;
 var searchbar;
 var yr,
     sem,
     temp = 1;
+
+function ask() {
+    var nodemailer = require("nodemailer");
+
+    var transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+            user: options.askfrom,
+            pass: options.password,
+        },
+    });
+
+    var mailOptions = {
+        from: options.askfrom,
+        to: options.uremail,
+        subject: "Doubt",
+        html: options.content,
+    };
+    transporter.sendMail(mailOptions);
+}
 
 function sendMail() {
     var nodemailer = require("nodemailer");
@@ -252,6 +273,17 @@ app.post("/login", (req, res) => {
             });
         }
     });
+});
+
+app.post("/ask", (req, res) => {
+    options = {
+        askfrom: req.body.from,
+        password: req.body.password,
+        uremail: req.body.to,
+        content: req.body.query,
+    };
+    ask();
+    res.render("next.ejs");
 });
 
 app.post("/search", (req, res) => {
