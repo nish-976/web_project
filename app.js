@@ -156,7 +156,7 @@ app.get("/home", (req, res, next) => {
     res.render("home.ejs");
 });
 app.get("/comment", (req, res, next) => {
-    res.render("comment.ejs");
+    res.render("next.ejs");
 });
 
 app.get("/about", (req, res, next) => {
@@ -216,11 +216,8 @@ async function SubjectSearcher() {
     return l;
 }
 
-
 async function Commenter() {
-    const l = await Comment.find({
-       
-    });
+    const l = await Comment.find({});
 
     return l;
 }
@@ -275,12 +272,6 @@ async function performDBOps() {
     Comment = mongoose.model("Comment", CommentSchema);
 }
 
-
-
-
-
-
-
 app.post("/register", (req, res) => {
     if (req.body.code != secretcode);
     else {
@@ -300,25 +291,18 @@ app.post("/register", (req, res) => {
     }
 });
 
-
-
-
 app.post("/commentArr", (req, res) => {
-    
     Commenter().then((alert) => res.send(alert));
-}
-);
-
+});
 
 app.post("/commentsec", (req, res) => {
-        const com  = new Comment({
-            name: req.body.fname,
-            comment: req.body.cmnt,
-        });
-        com.save();
-    }
-);
-
+    const com = new Comment({
+        name: req.body.fname,
+        comment: req.body.cmnt,
+    });
+    com.save();
+    res.redirect("/comment");
+});
 
 app.post("/video", (req, res) => {
     const lectures = new Course({
