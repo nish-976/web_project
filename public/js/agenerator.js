@@ -54,7 +54,7 @@ function display(e) {
     console.log(111);
     var eval = e.target.innerHTML;
 
-    var str1 = "/findslide?year=" + a + "&tag=" + eval;
+    var str1 = "/findassignment?year=" + a + "&tag=" + eval;
     console.log(str1);
     xhttp1.open("POST", str1, true);
     xhttp1.send();

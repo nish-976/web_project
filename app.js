@@ -174,6 +174,13 @@ app.get("/slides", (req, res, next) => {
     });
 });
 
+app.get("/assignments", (req, res, next) => {
+    res.render("assignments.ejs", {
+        yr: yr,
+        sem: sem,
+    });
+});
+
 app.get("/videos", (req, res, next) => {
     res.render("videos.ejs", {
         yr: yr,
@@ -198,10 +205,19 @@ async function Searcher() {
     return l;
 }
 
-async function finder() {
+async function slidefinder() {
     const l = await Slide.find({
-        year: findbar.year,
-        tag: findbar.tag,
+        year: findslidebar.year,
+        tag: findslidebar.tag,
+    });
+
+    return l;
+}
+
+async function assignmentfinder() {
+    const l = await Assignment.find({
+        year: findassignmentbar.year,
+        tag: findassignmentbar.tag,
     });
 
     return l;
@@ -251,6 +267,15 @@ async function performDBOps() {
         date: { type: Date, default: Date.now },
         isPublished: Boolean,
     });
+    let AssignmentSchema = await new mongoose.Schema({
+        name: String,
+        link: String,
+        year: String,
+        semester: String,
+        tag: String,
+        date: { type: Date, default: Date.now },
+        isPublished: Boolean,
+    });
     let SubjectSchema = await new mongoose.Schema({
         year: String,
         sem: String,
@@ -268,6 +293,7 @@ async function performDBOps() {
     Subject = mongoose.model("Value", SubjectSchema);
     Course = mongoose.model("Course", DBSchema);
     Slide = mongoose.model("Slide", SlideSchema);
+    Assignment= mongoose.model("Assignment", AssignmentSchema);
     Login = mongoose.model("Login", LoginSchema);
     Comment = mongoose.model("Comment", CommentSchema);
 }
@@ -371,12 +397,20 @@ app.post("/search", (req, res) => {
     Searcher().then((alert) => res.send(alert));
 });
 
-app.post("/find", (req, res) => {
-    findbar = new Slide({
+app.post("/findslide", (req, res) => {
+    findslidebar = new Slide({
         year: req.query.year,
         tag: req.query.tag,
     });
-    finder().then((alert) => res.send(alert));
+    slidefinder().then((alert) => res.send(alert));
+});
+
+app.post("/findassignment", (req,res) => {
+    findassignmentbar = new Assignment({
+        year: req.query.year,
+        tag:req.query.tag,
+    });
+    assignmentfinder().then((alert) => res.send(alert));
 });
 
 app.post("/yeardata", (req, res) => {
