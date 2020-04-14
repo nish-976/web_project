@@ -10,11 +10,47 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
+var contact_options = null;
 var options = null;
 var searchbar;
 var yr,
     sem,
     temp = 1;
+
+function contact() {
+    var nodemailer = require("nodemailer");
+
+    var transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+            user: "collegenotesjadavpuruniversity@gmail.com",
+            pass: "905197LKKS",
+        },
+    });
+
+    var mailOptions = {
+        from: "collegenotesjadavpuruniversity@gmail.com",
+        to: "kakolipal528@gmail.com",
+        subject: contact_options.email,
+        html: "<h5>Name:</h5>" +
+            contact_options.name +
+            "<h5>Message:</h5>" +
+            contact_options.message,
+    };
+
+    var mailOptions1 = {
+        from: "collegenotesjadavpuruniversity@gmail.com",
+        to: "singhrajnishant976@gmail.com",
+        subject: contact_options.email,
+        html: "<h5>Name:</h5>" +
+            contact_options.name +
+            "<h5>Message:</h5>" +
+            contact_options.message,
+    };
+
+    transporter.sendMail(mailOptions);
+    transporter.sendMail(mailOptions1);
+}
 
 function ask() {
     var nodemailer = require("nodemailer");
@@ -22,15 +58,15 @@ function ask() {
     var transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
-            user: options.askfrom,
-            pass: options.password,
+            user: "collegenotesjadavpuruniversity@gmail.com",
+            pass: "905197LKKS",
         },
     });
 
     var mailOptions = {
-        from: options.askfrom,
-        to: options.uremail,
-        subject: "Doubt",
+        from: "collegenotesjadavpuruniversity@gmail.com",
+        to: options.askfrom,
+        subject: options.uremail,
         html: options.content,
     };
     transporter.sendMail(mailOptions);
@@ -118,6 +154,10 @@ app.get("/logout", (req, res, next) => {
 
 app.get("/home", (req, res, next) => {
     res.render("home.ejs");
+});
+
+app.get("/about", (req, res, next) => {
+    res.render("aboutUs.ejs");
 });
 
 app.get("/next", (req, res, next) => {
@@ -275,11 +315,20 @@ app.post("/login", (req, res) => {
     });
 });
 
+app.post("/contact", (req, res) => {
+    contact_options = {
+        name: req.body.name,
+        email: req.body.email,
+        message: req.body.message,
+    };
+    contact();
+    res.render("home.ejs");
+});
+
 app.post("/ask", (req, res) => {
     options = {
-        askfrom: req.body.from,
-        password: req.body.password,
-        uremail: req.body.to,
+        uremail: req.body.from,
+        askfrom: req.body.to,
         content: req.body.query,
     };
     ask();

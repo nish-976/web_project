@@ -9,7 +9,7 @@
         "cookie-parser": "^1.4.5",
         "ejs": "^3.0.1",
         "express": "^4.17.1",
-        "mdbootstrap": "^4.14.1",
+        "mdbootstrap": "^4.15.0",
         "mdi": "^2.2.43",
         "mongoose": "^5.9.6",
         "nodemailer": "^6.4.6",
