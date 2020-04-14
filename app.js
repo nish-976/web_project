@@ -155,6 +155,9 @@ app.get("/logout", (req, res, next) => {
 app.get("/home", (req, res, next) => {
     res.render("home.ejs");
 });
+app.get("/comment", (req, res, next) => {
+    res.render("comment.ejs");
+});
 
 app.get("/about", (req, res, next) => {
     res.render("aboutUs.ejs");
@@ -184,6 +187,7 @@ var login;
 var searcher;
 var searcher1;
 var Subject;
+var Comment;
 
 async function Searcher() {
     const l = await Course.find({
@@ -207,6 +211,15 @@ async function SubjectSearcher() {
     const l = await Subject.find({
         year: searcher1.year,
         sem: searcher1.sem,
+    });
+
+    return l;
+}
+
+
+async function Commenter() {
+    const l = await Comment.find({
+       
     });
 
     return l;
@@ -250,12 +263,23 @@ async function performDBOps() {
         email: String,
         password: String,
     });
+    let CommentSchema = await new mongoose.Schema({
+        name: String,
+        comment: String,
+    });
 
     Subject = mongoose.model("Value", SubjectSchema);
     Course = mongoose.model("Course", DBSchema);
     Slide = mongoose.model("Slide", SlideSchema);
     Login = mongoose.model("Login", LoginSchema);
+    Comment = mongoose.model("Comment", CommentSchema);
 }
+
+
+
+
+
+
 
 app.post("/register", (req, res) => {
     if (req.body.code != secretcode);
@@ -275,6 +299,26 @@ app.post("/register", (req, res) => {
         });
     }
 });
+
+
+
+
+app.post("/commentArr", (req, res) => {
+    
+    Commenter().then((alert) => res.send(alert));
+}
+);
+
+
+app.post("/commentsec", (req, res) => {
+        const com  = new Comment({
+            name: req.body.fname,
+            comment: req.body.cmnt,
+        });
+        com.save();
+    }
+);
+
 
 app.post("/video", (req, res) => {
     const lectures = new Course({
