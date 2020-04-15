@@ -1,3 +1,50 @@
+@media (max-width: 575px) {
+  .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+  }
+  .card {
+      flex: 1;
+  }
+  .comment {
+      margin-top: 3.5rem;
+      text-align: center;
+  }
+  .list-group {
+      margin-top: 10px;
+  }
+  .parent-list {
+      margin: 0 100px 0 100px;
+  }
+  .poscomm {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+  }
+  .set-color {
+      color: #3f51b5;
+  }
+  #add {
+      display: inline-block;
+  }
+  #dang {
+      background-color: #ef5350;
+  }
+  #warn {
+      background-color: #fdd835;
+  }
+  #blu {
+      background-color: #29b6f6;
+  }
+  #footer-section {
+      margin-top: 5.2rem;
+  }
+}
+
+
 @media (min-width: 576px) {
     .container {
         display: flex;
@@ -21,7 +68,8 @@
     .poscomm {
         display: flex;
         flex-wrap: wrap;
-        margin-left: 12.5rem;
+        justify-content: center;
+        align-items: center;
     }
     .set-color {
         color: #3f51b5;
@@ -66,7 +114,8 @@
     .poscomm {
         display: flex;
         flex-wrap: wrap;
-        margin-left: 12.5rem;
+        justify-content: center;
+        align-items: center;
     }
     .set-color {
         color: #3f51b5;
@@ -111,7 +160,8 @@
     .poscomm {
         display: flex;
         flex-wrap: wrap;
-        margin-left: 12.5rem;
+        justify-content: center;
+        align-items: center;
     }
     .set-color {
         color: #3f51b5;
@@ -156,7 +206,8 @@
     .poscomm {
         display: flex;
         flex-wrap: wrap;
-        margin-left: 12.5rem;
+        justify-content: center;
+        align-items: center;
     }
     .set-color {
         color: #3f51b5;

@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jadavpur university</title>
+    <base href="/">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" />
     <!-- Google Fonts -->
@@ -22,6 +23,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/js/mdb.min.js"></script>
+
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans" />
 </head>
@@ -103,7 +105,7 @@
     </div>
     <div id="child2">
         <form id="card" class="text-center border border-light p-5" action="/login" method="POST">
-            <% if (!temp) { %>
+          <% if (!temp) { %>
                 <div class="alert alert-danger" role="alert">
                     Invalid Credentials
                 </div>
@@ -156,6 +158,7 @@
     </div>
 
     <link rel="stylesheet" href="/stylesheets/reglog.css" />
+
 </body>
 
 </html>
