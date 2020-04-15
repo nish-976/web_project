@@ -164,12 +164,21 @@
     }
     #dang {
         background-color: #ef5350;
+        min-width: 20rem;
     }
     #warn {
         background-color: #fdd835;
+        min-width: 20rem;
     }
     #blu {
         background-color: #29b6f6;
+        min-width: 20rem;
+    }
+    #grin {
+       min-width: 20rem;
+    }
+    #bloo {
+      min-width: 20rem;
     }
     #footer-section {
         margin-top: 5.2rem;
@@ -217,12 +226,21 @@
     }
     #dang {
         background-color: #ef5350;
+        min-width: 20rem;
     }
     #warn {
         background-color: #fdd835;
+        min-width: 20rem;
     }
     #blu {
         background-color: #29b6f6;
+        min-width: 20rem;
+    }
+    #grin {
+       min-width: 20rem;
+    }
+    #bloo {
+      min-width: 20rem;
     }
     #footer-section {
         margin-top: 5.2rem;
@@ -270,12 +288,21 @@
     }
     #dang {
         background-color: #ef5350;
+        min-width: 20rem;
     }
     #warn {
         background-color: #fdd835;
+        min-width: 20rem;
     }
     #blu {
         background-color: #29b6f6;
+        min-width: 20rem;
+    }
+    #grin {
+       min-width: 20rem;
+    }
+    #bloo {
+      min-width: 20rem;
     }
     #footer-section {
         margin-top: 5.2rem;
