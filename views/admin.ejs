@@ -1,78 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <title>Welcome to JU</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="vendors/owl-carousel/css/owl.carousel.min.css" />
-    <link rel="stylesheet" href="vendors/owl-carousel/css/owl.theme.default.css" />
+    <link
+      rel="stylesheet"
+      href="vendors/owl-carousel/css/owl.carousel.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="vendors/owl-carousel/css/owl.theme.default.css"
+    />
     <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css" />
     <link rel="stylesheet" href="vendors/aos/css/aos.css" />
     <link rel="stylesheet" href="css/style.min.css" />
-</head>
+  </head>
 
-<body id="body" data-spy="scroll" data-target=".navbar" data-offset="100">
+  <body id="body" data-spy="scroll" data-target=".navbar" data-offset="100">
     <header id="header-section">
-        <nav class="navbar navbar-expand-lg pl-3 pl-sm-0" id="navbar">
-            <div class="container">
-                <div class="navbar-brand-wrapper d-flex w-100">
-                    <img src="ja.png" alt="" />
-                    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <nav class="navbar navbar-expand-lg pl-3 pl-sm-0" id="navbar">
+        <div class="container">
+          <div class="navbar-brand-wrapper d-flex w-100">
+            <img src="ja.png" alt="" />
+            <button
+              class="navbar-toggler ml-auto"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
               <span class="mdi mdi-menu navbar-toggler-icon"></span>
             </button>
+          </div>
+          <div
+            class="collapse navbar-collapse navbar-menu-wrapper"
+            id="navbarSupportedContent"
+          >
+            <ul
+              class="navbar-nav align-items-lg-center align-items-start ml-auto"
+            >
+              <li
+                class="d-flex align-items-center justify-content-between pl-4 pl-lg-0"
+              >
+                <div class="navbar-collapse-logo">
+                  <img src="ja.png" alt="" />
                 </div>
-                <div class="collapse navbar-collapse navbar-menu-wrapper" id="navbarSupportedContent">
-                    <ul class="navbar-nav align-items-lg-center align-items-start ml-auto">
-                        <li class="d-flex align-items-center justify-content-between pl-4 pl-lg-0">
-                            <div class="navbar-collapse-logo">
-                                <img src="ja.png" alt="" />
-                            </div>
-                            <button class="navbar-toggler close-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button
+                  class="navbar-toggler close-button"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#navbarSupportedContent"
+                  aria-controls="navbarSupportedContent"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                >
                   <span class="mdi mdi-close navbar-toggler-icon pl-5"></span>
                 </button>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/home"
+                  >Home <span class="sr-only">(current)</span></a
                 >
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#features-section">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#digital-marketing-section">Blog</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#feedback-section">Team</a>
-                        </li>
-                        <li class="nav-item btn-contact-us pl-4 pl-lg-0">
-                            <form action="/logout" method="GET">
-                                <button class="btn btn-info" type="submit">
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#digital-marketing-section">Blog</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#feedback-section">Team</a>
+              </li>
+              <li class="nav-item btn-contact-us pl-4 pl-lg-0">
+                <form action="/logout" method="GET">
+                  <button class="btn btn-info" type="submit">
                     Logout
                   </button>
-                            </form>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+                </form>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </header>
 
     <% if(success != "") {%>
-        <div class="msgbox">
-            <div class="alert alert-success" role="alert">
-                <%= success %>
-            </div>
-        </div>
-        <% } %>
-            <div class="middle">
-                <div class="child">
-                    <div id="blu" class="card text-white mb-3">
-                        <div class="card-body">
-                            <h5 class="card-title">Slides</h5>
-                            <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a href="#" class="card-link" data-toggle="modal" data-target="#exampleModal">Modify Contents</a
+    <div class="msgbox">
+      <div class="alert alert-success" role="alert">
+        <%= success %>
+      </div>
+    </div>
+    <% } %>
+    <div class="middle">
+      <div class="child">
+        <div id="blu" class="card text-white mb-3">
+          <div class="card-body">
+            <h5 class="card-title">Slides</h5>
+            <div
+              class="card-footer d-flex align-items-center justify-content-between"
+            >
+              <a
+                href="#"
+                class="card-link"
+                data-toggle="modal"
+                data-target="#forslide"
+                >Modify Contents</a
               >
             </div>
           </div>
@@ -88,7 +124,7 @@
                 href="#"
                 class="card-link"
                 data-toggle="modal"
-                data-target="#exampleModal"
+                data-target="#forvideo"
                 >Modify Contents</a
               >
             </div>
@@ -105,7 +141,7 @@
                 href="#"
                 class="card-link"
                 data-toggle="modal"
-                data-target="#exampleModal"
+                data-target="#forassignments"
                 >Modify Contents</a
               >
             </div>
@@ -123,7 +159,7 @@
                 href="#"
                 class="card-link"
                 data-toggle="modal"
-                data-target="#exampleModal"
+                data-target="#fornotes"
                 >Modify Contents</a
               >
             </div>
@@ -140,7 +176,7 @@
                 href="#"
                 class="card-link"
                 data-toggle="modal"
-                data-target="#exampleModal"
+                data-target="#forquestions"
                 >Modify Contents</a
               >
             </div>
@@ -151,7 +187,91 @@
 
     <div
       class="modal fade"
-      id="exampleModal"
+      id="forslide"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="exampleModalLabel">Modify Contents</h4>
+          </div>
+          <div class="modal-body">
+            <form action="" method="POST">
+              <div class="form-group">
+                <label for="year">Year</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="Email-1"
+                  name="yr"
+                  placeholder="year"
+                />
+              </div>
+              <div class="form-group">
+                <label for="sem">Sem</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="Email-1"
+                  name="sems"
+                  placeholder="sem"
+                />
+              </div>
+              <div class="form-group">
+                <label for="subject">Tag</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="Email-1"
+                  name="subj"
+                  placeholder="subject"
+                />
+              </div>
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="Email-1"
+                  name="video"
+                  placeholder="video"
+                />
+              </div>
+              <div class="form-group">
+                <label for="link">Link</label>
+                <input
+                  type="url"
+                  class="form-control"
+                  id="Email-1"
+                  name="link"
+                  placeholder="link"
+                />
+              </div>
+
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-light"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button class="btn btn-success" type="submit">
+                  Add
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="forvideo"
       tabindex="-1"
       role="dialog"
       aria-labelledby="exampleModalLabel"
@@ -164,6 +284,258 @@
           </div>
           <div class="modal-body">
             <form action="/video" method="POST">
+              <div class="form-group">
+                <label for="year">Year</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="Email-1"
+                  name="yr"
+                  placeholder="year"
+                />
+              </div>
+              <div class="form-group">
+                <label for="sem">Sem</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="Email-1"
+                  name="sems"
+                  placeholder="sem"
+                />
+              </div>
+              <div class="form-group">
+                <label for="subject">Tag</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="Email-1"
+                  name="subj"
+                  placeholder="subject"
+                />
+              </div>
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="Email-1"
+                  name="video"
+                  placeholder="video"
+                />
+              </div>
+              <div class="form-group">
+                <label for="link">Link</label>
+                <input
+                  type="url"
+                  class="form-control"
+                  id="Email-1"
+                  name="link"
+                  placeholder="link"
+                />
+              </div>
+
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-light"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button class="btn btn-success" type="submit">
+                  Add
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="forassignments"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="exampleModalLabel">Modify Contents</h4>
+          </div>
+          <div class="modal-body">
+            <form action="" method="POST">
+              <div class="form-group">
+                <label for="year">Year</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="Email-1"
+                  name="yr"
+                  placeholder="year"
+                />
+              </div>
+              <div class="form-group">
+                <label for="sem">Sem</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="Email-1"
+                  name="sems"
+                  placeholder="sem"
+                />
+              </div>
+              <div class="form-group">
+                <label for="subject">Tag</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="Email-1"
+                  name="subj"
+                  placeholder="subject"
+                />
+              </div>
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="Email-1"
+                  name="video"
+                  placeholder="video"
+                />
+              </div>
+              <div class="form-group">
+                <label for="link">Link</label>
+                <input
+                  type="url"
+                  class="form-control"
+                  id="Email-1"
+                  name="link"
+                  placeholder="link"
+                />
+              </div>
+
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-light"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button class="btn btn-success" type="submit">
+                  Add
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="fornotes"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="exampleModalLabel">Modify Contents</h4>
+          </div>
+          <div class="modal-body">
+            <form action="" method="POST">
+              <div class="form-group">
+                <label for="year">Year</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="Email-1"
+                  name="yr"
+                  placeholder="year"
+                />
+              </div>
+              <div class="form-group">
+                <label for="sem">Sem</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="Email-1"
+                  name="sems"
+                  placeholder="sem"
+                />
+              </div>
+              <div class="form-group">
+                <label for="subject">Tag</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="Email-1"
+                  name="subj"
+                  placeholder="subject"
+                />
+              </div>
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="Email-1"
+                  name="video"
+                  placeholder="video"
+                />
+              </div>
+              <div class="form-group">
+                <label for="link">Link</label>
+                <input
+                  type="url"
+                  class="form-control"
+                  id="Email-1"
+                  name="link"
+                  placeholder="link"
+                />
+              </div>
+
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-light"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button class="btn btn-success" type="submit">
+                  Add
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="forquestions"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="exampleModalLabel">Modify Contents</h4>
+          </div>
+          <div class="modal-body">
+            <form action="" method="POST">
               <div class="form-group">
                 <label for="year">Year</label>
                 <input
