@@ -1,155 +1,171 @@
 @media (min-width: 576px) {
-    #child1 {
-        float: left;
-        width: 50%;
-        height: 100%;
-    }
-    #child2 {
-        float: right;
-        width: 50%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    #card {
-        height: 40rem;
-    }
-    .front-page-image {
-        height: 40rem;
-    }
-    #university-name {
-        margin-left: 1rem;
-        line-height: 1.2rem;
-    }
-    #register {
-        margin-top: 0.2rem;
-        margin-bottom: 0.8rem;
-    }
-    strong {
-        color: blue;
-        font-size: large;
-    }
-    i {
-        font-size: small;
-        margin-left: 0.8rem;
-        color: blue;
-    }
+  .navbar {
+    background-color: #f7f8fa;
+    padding: 30px 0 20px;
+  }
+  #child1 {
+    float: left;
+    width: 50%;
+    height: 100%;
+  }
+  #child2 {
+    float: right;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #card {
+    height: 40rem;
+  }
+  .front-page-image {
+    height: 40rem;
+  }
+  #university-name {
+    margin-left: 1rem;
+    line-height: 1.2rem;
+  }
+  #register {
+    margin-top: 0.2rem;
+    margin-bottom: 0.8rem;
+  }
+  strong {
+    color: blue;
+    font-size: large;
+  }
+  i {
+    font-size: small;
+    margin-left: 0.8rem;
+    color: blue;
+  }
 }
 
 @media (min-width: 768px) {
-    #child1 {
-        float: left;
-        width: 50%;
-        height: 100%;
-    }
-    #child2 {
-        float: right;
-        width: 50%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    #card {
-        height: 40rem;
-    }
-    .front-page-image {
-        height: 40rem;
-    }
-    #university-name {
-        margin-left: 1rem;
-        line-height: 1.2rem;
-    }
-    #register {
-        margin-top: 0.2rem;
-        margin-bottom: 0.8rem;
-    }
-    strong {
-        color: blue;
-        font-size: large;
-    }
-    i {
-        font-size: small;
-        margin-left: 0.8rem;
-        color: blue;
-    }
+  .navbar {
+    background-color: #f7f8fa;
+    padding: 30px 0 20px;
+  }
+  #child1 {
+    float: left;
+    width: 50%;
+    height: 100%;
+  }
+  #child2 {
+    float: right;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #card {
+    height: 40rem;
+  }
+  .front-page-image {
+    height: 40rem;
+  }
+  #university-name {
+    margin-left: 1rem;
+    line-height: 1.2rem;
+  }
+  #register {
+    margin-top: 0.2rem;
+    margin-bottom: 0.8rem;
+  }
+  strong {
+    color: blue;
+    font-size: large;
+  }
+  i {
+    font-size: small;
+    margin-left: 0.8rem;
+    color: blue;
+  }
 }
 
 @media (min-width: 992px) {
-    #child1 {
-        float: left;
-        width: 50%;
-        height: 100%;
-    }
-    #child2 {
-        float: right;
-        width: 50%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    #card {
-        height: 40rem;
-    }
-    .front-page-image {
-        height: 40rem;
-    }
-    #university-name {
-        margin-left: 1rem;
-        line-height: 1.2rem;
-    }
-    #register {
-        margin-top: 0.2rem;
-        margin-bottom: 0.8rem;
-    }
-    strong {
-        color: blue;
-        font-size: 1.2rem;
-    }
-    i {
-        font-size: 0.8rem;
-        margin-left: 1.2rem;
-        color: blue;
-    }
+  .navbar {
+    background-color: #f7f8fa;
+    padding: 30px 0 20px;
+  }
+  #child1 {
+    float: left;
+    width: 50%;
+    height: 100%;
+  }
+  #child2 {
+    float: right;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #card {
+    height: 40rem;
+  }
+  .front-page-image {
+    height: 40rem;
+  }
+  #university-name {
+    margin-left: 1rem;
+    line-height: 1.2rem;
+  }
+  #register {
+    margin-top: 0.2rem;
+    margin-bottom: 0.8rem;
+  }
+  strong {
+    color: blue;
+    font-size: 1.2rem;
+  }
+  i {
+    font-size: 0.8rem;
+    margin-left: 1.2rem;
+    color: blue;
+  }
 }
 
 @media (min-width: 1200px) {
-    #child1 {
-        float: left;
-        width: 50%;
-        height: 100%;
-    }
-    #child2 {
-        float: right;
-        width: 50%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    #card {
-        height: 40rem;
-    }
-    .front-page-image {
-        height: 40rem;
-    }
-    #university-name {
-        margin-left: 1rem;
-        line-height: 1.2rem;
-    }
-    #register {
-        margin-top: 0.2rem;
-        margin-bottom: 0.8rem;
-    }
-    strong {
-        color: blue;
-        font-size: 1.2rem;
-    }
-    i {
-        font-size: 0.8rem;
-        margin-left: 1.2rem;
-        color: blue;
-    }
+  .navbar {
+    background-color: #f7f8fa;
+    padding: 30px 0 20px;
+  }
+  #child1 {
+    float: left;
+    width: 50%;
+    height: 100%;
+  }
+  #child2 {
+    float: right;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #card {
+    height: 40rem;
+  }
+  .front-page-image {
+    height: 40rem;
+  }
+  #university-name {
+    margin-left: 1rem;
+    line-height: 1.2rem;
+  }
+  #register {
+    margin-top: 0.2rem;
+    margin-bottom: 0.8rem;
+  }
+  strong {
+    color: blue;
+    font-size: 1.2rem;
+  }
+  i {
+    font-size: 0.8rem;
+    margin-left: 1.2rem;
+    color: blue;
+  }
 }

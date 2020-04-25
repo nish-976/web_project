@@ -99,7 +99,7 @@
       <div class="child">
         <div id="blu" class="card text-white mb-3">
           <div class="card-body">
-            <h5 class="card-title">Slides</h5>
+            <h5 class="card-title">Topic-wise Slides</h5>
             <div
               class="card-footer d-flex align-items-center justify-content-between"
             >
@@ -131,7 +131,7 @@
           </div>
         </div>
         &nbsp;&nbsp;
-        <div class="card text-white bg-secondary mb-3">
+        <div id="bloo" class="card text-white bg-secondary mb-3">
           <div class="card-body">
             <h5 class="card-title">Assignments</h5>
             <div
@@ -149,9 +149,9 @@
         </div>
       </div>
       <div class="child" style="margin-top: -7px;">
-        <div class="card text-white bg-success mb-3">
+        <div id="grin" class="card text-white bg-success mb-3">
           <div class="card-body">
-            <h5 class="card-title">Notes</h5>
+            <h5 class="card-title">Notes/Books</h5>
             <div
               class="card-footer d-flex align-items-center justify-content-between"
             >
@@ -199,7 +199,7 @@
             <h4 class="modal-title" id="exampleModalLabel">Modify Contents</h4>
           </div>
           <div class="modal-body">
-            <form action="" method="POST">
+            <form action="/slide" method="POST">
               <div class="form-group">
                 <label for="year">Year</label>
                 <input
@@ -236,8 +236,8 @@
                   type="text"
                   class="form-control"
                   id="Email-1"
-                  name="video"
-                  placeholder="video"
+                  name="slide"
+                  placeholder="slide"
                 />
               </div>
               <div class="form-group">
@@ -367,7 +367,7 @@
             <h4 class="modal-title" id="exampleModalLabel">Modify Contents</h4>
           </div>
           <div class="modal-body">
-            <form action="" method="POST">
+            <form action="/assignment" method="POST">
               <div class="form-group">
                 <label for="year">Year</label>
                 <input
@@ -404,8 +404,8 @@
                   type="text"
                   class="form-control"
                   id="Email-1"
-                  name="video"
-                  placeholder="video"
+                  name="assignment"
+                  placeholder="assignment"
                 />
               </div>
               <div class="form-group">
@@ -451,7 +451,7 @@
             <h4 class="modal-title" id="exampleModalLabel">Modify Contents</h4>
           </div>
           <div class="modal-body">
-            <form action="" method="POST">
+            <form action="/note" method="POST">
               <div class="form-group">
                 <label for="year">Year</label>
                 <input
@@ -488,18 +488,8 @@
                   type="text"
                   class="form-control"
                   id="Email-1"
-                  name="video"
-                  placeholder="video"
-                />
-              </div>
-              <div class="form-group">
-                <label for="link">Link</label>
-                <input
-                  type="url"
-                  class="form-control"
-                  id="Email-1"
-                  name="link"
-                  placeholder="link"
+                  name="book"
+                  placeholder="book"
                 />
               </div>
 
@@ -535,7 +525,7 @@
             <h4 class="modal-title" id="exampleModalLabel">Modify Contents</h4>
           </div>
           <div class="modal-body">
-            <form action="" method="POST">
+            <form action="/question" method="POST">
               <div class="form-group">
                 <label for="year">Year</label>
                 <input
@@ -572,8 +562,8 @@
                   type="text"
                   class="form-control"
                   id="Email-1"
-                  name="video"
-                  placeholder="video"
+                  name="question"
+                  placeholder="question"
                 />
               </div>
               <div class="form-group">

@@ -8,9 +8,11 @@ var cookieParser = require("cookie-parser");
 app.use(cookieParser());
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
-app.use(bodyParser.urlencoded({
-  extended: false
-}));
+app.use(
+  bodyParser.urlencoded({
+    extended: false,
+  })
+);
 app.use(express.static(path.join(__dirname, "public")));
 var contact_options = null;
 var options = null;
@@ -34,7 +36,8 @@ function contact() {
     from: "collegenotesjadavpuruniversity@gmail.com",
     to: "kakolipal528@gmail.com",
     subject: contact_options.email,
-    html: "<h5>Name:</h5>" +
+    html:
+      "<h5>Name:</h5>" +
       contact_options.name +
       "<h5>Message:</h5>" +
       contact_options.message,
@@ -44,7 +47,8 @@ function contact() {
     from: "collegenotesjadavpuruniversity@gmail.com",
     to: "singhrajnishant976@gmail.com",
     subject: contact_options.email,
-    html: "<h5>Name:</h5>" +
+    html:
+      "<h5>Name:</h5>" +
       contact_options.name +
       "<h5>Message:</h5>" +
       contact_options.message,
@@ -183,18 +187,18 @@ app.get("/assignments", (req, res, next) => {
   });
 });
 
-app.get("/books", (req,res,next) => {
-    res.render("books.ejs", {
-      yr: yr,
-      sem: sem,
-    });
+app.get("/books", (req, res, next) => {
+  res.render("books.ejs", {
+    yr: yr,
+    sem: sem,
+  });
 });
 
-app.get("/questionpapers", (req,res,next) => {
-    res.render("questions.ejs", {
-      yr: yr,
-      sem: sem,
-    });
+app.get("/questionpapers", (req, res, next) => {
+  res.render("questions.ejs", {
+    yr: yr,
+    sem: sem,
+  });
 });
 
 app.get("/videos", (req, res, next) => {
@@ -274,9 +278,10 @@ async function Commenter() {
 
 mongoose
   .connect(
-    "mongodb+srv://ramit:905197LKKS@cluster0-zol4l.gcp.mongodb.net/webtech?retryWrites=true&w=majority", {
+    "mongodb+srv://ramit:905197LKKS@cluster0-zol4l.gcp.mongodb.net/webtech?retryWrites=true&w=majority",
+    {
       useNewUrlParser: true,
-      useUnifiedTopology: true
+      useUnifiedTopology: true,
     }
   )
   .then(() => {
@@ -294,7 +299,7 @@ async function performDBOps() {
     tag: String,
     date: {
       type: Date,
-      default: Date.now
+      default: Date.now,
     },
     isPublished: Boolean,
   });
@@ -306,7 +311,7 @@ async function performDBOps() {
     tag: String,
     date: {
       type: Date,
-      default: Date.now
+      default: Date.now,
     },
     isPublished: Boolean,
   });
@@ -318,7 +323,7 @@ async function performDBOps() {
     tag: String,
     date: {
       type: Date,
-      default: Date.now
+      default: Date.now,
     },
     isPublished: Boolean,
   });
@@ -330,7 +335,7 @@ async function performDBOps() {
     tag: String,
     date: {
       type: Date,
-      default: Date.now
+      default: Date.now,
     },
     isPublished: Boolean,
   });
@@ -341,7 +346,7 @@ async function performDBOps() {
     tag: String,
     date: {
       type: Date,
-      default: Date.now
+      default: Date.now,
     },
     isPublished: Boolean,
   });
@@ -363,7 +368,7 @@ async function performDBOps() {
   Course = mongoose.model("Course", DBSchema);
   Slide = mongoose.model("Slide", SlideSchema);
   Assignment = mongoose.model("Assignment", AssignmentSchema);
-  Question = mongoose.model("Question",QuestionSchema);
+  Question = mongoose.model("Question", QuestionSchema);
   Book = mongoose.model("Book", BookSchema);
   Login = mongoose.model("Login", LoginSchema);
   Comment = mongoose.model("Comment", CommentSchema);
@@ -401,9 +406,76 @@ app.post("/commentsec", (req, res) => {
   res.redirect("/comment");
 });
 
+app.post("/slide", (req, res) => {
+  const lectures = new Slide({
+    name: req.body.slide,
+    link: req.body.link,
+    year: req.body.yr,
+    semester: req.body.sems,
+    tag: req.body.subj,
+    isPublished: true,
+  });
+  lectures.save((err, lecture) => {
+    if (err) return console.log(err);
+    res.render("admin.ejs", {
+      success: "Record inserted successfully",
+    });
+  });
+});
+
 app.post("/video", (req, res) => {
   const lectures = new Course({
     name: req.body.video,
+    link: req.body.link,
+    year: req.body.yr,
+    semester: req.body.sems,
+    tag: req.body.subj,
+    isPublished: true,
+  });
+  lectures.save((err, lecture) => {
+    if (err) return console.log(err);
+    res.render("admin.ejs", {
+      success: "Record inserted successfully",
+    });
+  });
+});
+
+app.post("/assignment", (req, res) => {
+  const lectures = new Assignment({
+    name: req.body.assignment,
+    link: req.body.link,
+    year: req.body.yr,
+    semester: req.body.sems,
+    tag: req.body.subj,
+    isPublished: true,
+  });
+  lectures.save((err, lecture) => {
+    if (err) return console.log(err);
+    res.render("admin.ejs", {
+      success: "Record inserted successfully",
+    });
+  });
+});
+
+app.post("/note", (req, res) => {
+  const lectures = new Book({
+    name: req.body.book,
+    year: req.body.yr,
+    semester: req.body.sems,
+    tag: req.body.subj,
+    isPublished: true,
+  });
+  lectures.save((err, lecture) => {
+    if (err) return console.log(err);
+    res.render("admin.ejs", {
+      success: "Record inserted successfully",
+    });
+  });
+});
+
+app.post("/question", (req, res) => {
+  const lectures = new Question({
+    name: req.body.question,
     link: req.body.link,
     year: req.body.yr,
     semester: req.body.sems,
@@ -422,28 +494,31 @@ app.post("/login", (req, res) => {
   var email = req.body.email;
   var password = req.body.password;
 
-  Login.findOne({
-    email: email,
-    password: password
-  }, function(err, result) {
-    if (err) {
-      console.log(err);
-      return res.status(500).send();
+  Login.findOne(
+    {
+      email: email,
+      password: password,
+    },
+    function (err, result) {
+      if (err) {
+        console.log(err);
+        return res.status(500).send();
+      }
+      if (!result) {
+        res.render("signin.ejs", {
+          temp: 0,
+        });
+        //temp = 0;
+        //res.redirect("/signin");
+      } else {
+        res.cookie("email", email);
+        res.cookie("password", password);
+        res.render("admin.ejs", {
+          success: "",
+        });
+      }
     }
-    if (!result) {
-      res.render('signin.ejs', {
-        temp: 0,
-      });
-      //temp = 0;
-      //res.redirect("/signin");
-    } else {
-      res.cookie("email", email);
-      res.cookie("password", password);
-      res.render("admin.ejs", {
-        success: "",
-      });
-    }
-  });
+  );
 });
 
 app.post("/contact", (req, res) => {
@@ -490,18 +565,18 @@ app.post("/findassignment", (req, res) => {
   assignmentfinder().then((alert) => res.send(alert));
 });
 
-app.post("/findquestion", (req,res) => {
+app.post("/findquestion", (req, res) => {
   findquestionbar = new Question({
-     year: req.query.year,
-     tag:req.query.tag,
+    year: req.query.year,
+    tag: req.query.tag,
   });
   questionfinder().then((alert) => res.send(alert));
 });
 
-app.post("/findbook", (req,res) => {
+app.post("/findbook", (req, res) => {
   findbookbar = new Book({
-     year: req.query.year,
-     tag:req.query.tag,
+    year: req.query.year,
+    tag: req.query.tag,
   });
   bookfinder().then((alert) => res.send(alert));
 });
