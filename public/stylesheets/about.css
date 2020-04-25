@@ -1,24 +1,42 @@
 .row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    margin-top: 4.3rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4.3rem;
+}
+
+.navbar {
+  background-color: #f7f8fa;
+  padding: 20px 0 20px;
+}
+#university-name {
+  line-height: 1.2rem;
+}
+strong {
+  color: blue;
+  font-size: large;
+}
+i {
+  font-size: small;
+  margin-left: 0.8rem;
+  color: blue;
 }
 
 #col-sm {
-    margin: 0.3rem;
-    padding: 0.3rem;
+  margin: 0.3rem;
+  padding: 0.3rem;
 }
 
-#footer {
-    margin-top: 5.2rem;
+.border {
+  margin-top: 5rem;
+  border-style: dotted;
 }
 
 .space {
-    margin-top: 6rem;
+  margin-top: 6rem;
 }
 
 .space-2 {
-    margin-top: 1rem;
+  margin-top: 1rem;
 }
